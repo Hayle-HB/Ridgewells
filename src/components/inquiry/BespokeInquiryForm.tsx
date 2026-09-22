@@ -51,7 +51,7 @@ export function BespokeInquiryForm({
     organization: '',
     eventDate: '',
     venuePreference: initialVenue,
-    startTime: '6:00 PM',
+    startTime: '6:00 PM (Evening Reception)',
     endTime: '10:30 PM',
     guestCount: initialGuests,
     budgetRange: '$25,000 – $50,000',
@@ -171,28 +171,31 @@ export function BespokeInquiryForm({
   return (
     <div style={{ width: '100%' }}>
       {submitSuccess ? (
-        /* MINIMALIST BLACK & WHITE SUCCESS CONFIRMATION */
+        /* ELEGANT CONFIRMATION PLAQUE */
         <div
           style={{
-            padding: 'clamp(40px, 5vw, 64px) clamp(24px, 4vw, 40px)',
+            padding: 'clamp(48px, 6vw, 72px) clamp(24px, 4vw, 48px)',
             textAlign: 'center',
-            maxWidth: '640px',
+            maxWidth: '680px',
             margin: '0 auto',
-            backgroundColor: '#FFFFFF',
-            border: '1px solid #000000',
+            backgroundColor: '#FCFAF8',
+            borderRadius: '4px',
+            border: '1px solid rgba(89, 35, 103, 0.16)',
+            boxShadow: '0 12px 36px rgba(89, 35, 103, 0.05)',
           }}
         >
           <div
             style={{
-              width: '48px',
-              height: '48px',
-              border: '1px solid #000000',
-              color: '#000000',
+              width: '56px',
+              height: '56px',
+              borderRadius: '50%',
+              border: '1.5px solid #C5A880',
+              color: '#592367',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '18px',
-              margin: '0 auto 20px',
+              fontSize: '22px',
+              margin: '0 auto 24px',
               fontFamily: 'var(--font-editorial)',
             }}
           >
@@ -201,25 +204,25 @@ export function BespokeInquiryForm({
 
           <span
             style={{
-              fontSize: '9.5px',
+              fontSize: '10.5px',
               fontWeight: 700,
-              letterSpacing: '0.24em',
+              letterSpacing: '0.22em',
               textTransform: 'uppercase',
-              color: '#666666',
+              color: '#9F8055',
               display: 'block',
-              marginBottom: '10px',
+              marginBottom: '12px',
             }}
           >
-            INQUIRY RECEIVED • REF #{submitSuccess.inquiryId?.slice(0, 8).toUpperCase() || 'RG-1928'}
+            INQUIRY RECEIVED • REFERENCE #{submitSuccess.inquiryId?.slice(0, 8).toUpperCase() || 'RG-1928'}
           </span>
 
           <h2
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(26px, 3.5vw, 36px)',
+              fontSize: 'clamp(28px, 3.5vw, 38px)',
               fontWeight: 400,
-              color: '#000000',
-              marginBottom: '14px',
+              color: '#35133E',
+              marginBottom: '16px',
               letterSpacing: '-0.01em',
             }}
           >
@@ -228,11 +231,11 @@ export function BespokeInquiryForm({
 
           <p
             style={{
-              fontSize: '14.5px',
-              color: '#444444',
-              lineHeight: 1.7,
-              maxWidth: '480px',
-              margin: '0 auto 32px',
+              fontSize: '15.5px',
+              color: '#554E5B',
+              lineHeight: 1.75,
+              maxWidth: '520px',
+              margin: '0 auto 36px',
               fontFamily: 'var(--font-sans)',
             }}
           >
@@ -242,35 +245,26 @@ export function BespokeInquiryForm({
           <button
             type="button"
             onClick={() => (window.location.href = '/')}
-            style={{
-              backgroundColor: '#000000',
-              color: '#FFFFFF',
-              border: '1px solid #000000',
-              padding: '14px 36px',
-              fontSize: '11px',
-              fontWeight: 700,
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              cursor: 'pointer',
-              transition: 'background-color 0.2s ease',
-            }}
+            className="btn-luxury-purple"
+            style={{ padding: '14px 40px', letterSpacing: '0.18em' }}
           >
-            Return to Homepage
+            Return to Ridgewells Homepage
           </button>
         </div>
       ) : (
-        /* MINIMALIST ALL-WHITE & BLACK LUXURY CONSULTATION FORM */
+        /* ARCHITECTURAL COMPACT LUXURY CONSULTATION FORM */
         <form onSubmit={handleSubmit} noValidate style={{ width: '100%' }}>
           {errorMessage && (
             <div
               style={{
-                backgroundColor: '#FFFFFF',
-                border: '1px solid #B91C1C',
-                color: '#B91C1C',
-                padding: '12px 16px',
+                backgroundColor: '#FAF1F1',
+                border: '1px solid rgba(185, 28, 28, 0.3)',
+                color: '#991B1B',
+                padding: '12px 18px',
                 fontSize: '13px',
                 lineHeight: 1.5,
-                marginBottom: '16px',
+                marginBottom: '20px',
+                borderRadius: '3px',
               }}
             >
               {errorMessage}
@@ -280,25 +274,27 @@ export function BespokeInquiryForm({
           <div
             style={{
               backgroundColor: '#FFFFFF',
-              border: '1px solid #E5E5E5',
+              borderRadius: '4px',
+              border: '1px solid rgba(89, 35, 103, 0.12)',
               padding: 'clamp(20px, 3.5vw, 32px)',
+              boxShadow: '0 4px 20px rgba(89, 35, 103, 0.03)',
             }}
           >
             {/* ═══════════════════════════════════════════
                 PART 1: THE OCCASION (COMPACT TILES & TIMING)
             ═══════════════════════════════════════════ */}
-            <div className="inquiry-section-header">
+            <div className="inquiry-section-header" style={{ marginBottom: '16px' }}>
               <h3 className="inquiry-section-title">The Occasion</h3>
-              <span className="inquiry-section-step">Specifications</span>
+              <span className="inquiry-section-step">Event Specifications</span>
             </div>
 
-            {/* Event Choice (Concise, no descriptions, all-white bg with black active) */}
+            {/* Event Choice (Concise, no descriptions, space-wise) */}
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))',
                 gap: '8px',
-                marginBottom: '18px',
+                marginBottom: '20px',
               }}
             >
               {EVENT_CATEGORIES.map((cat) => {
@@ -309,16 +305,18 @@ export function BespokeInquiryForm({
                     type="button"
                     onClick={() => handleFieldChange('eventType', cat.id)}
                     style={{
-                      padding: '11px 8px',
-                      border: isSelected ? '1px solid #000000' : '1px solid #E5E5E5',
-                      backgroundColor: isSelected ? '#000000' : '#FFFFFF',
-                      color: isSelected ? '#FFFFFF' : '#000000',
+                      padding: '11px 10px',
+                      borderRadius: '3px',
+                      border: isSelected ? '1.5px solid #592367' : '1px solid #DFD7E2',
+                      backgroundColor: isSelected ? '#592367' : '#FCFBFD',
+                      color: isSelected ? '#FFFFFF' : '#332D37',
                       cursor: 'pointer',
                       textAlign: 'center',
                       fontFamily: 'var(--font-serif)',
                       fontSize: '13px',
-                      fontWeight: isSelected ? 600 : 400,
-                      transition: 'all 0.15s ease',
+                      fontWeight: isSelected ? 600 : 500,
+                      transition: 'all 0.2s ease',
+                      boxShadow: isSelected ? '0 4px 12px rgba(89, 35, 103, 0.12)' : 'none',
                       whiteSpace: 'nowrap',
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
@@ -330,8 +328,8 @@ export function BespokeInquiryForm({
               })}
             </div>
 
-            {/* Date & Timing Row (Clean times, no extra text) */}
-            <div style={{ marginBottom: '14px' }}>
+            {/* Date & Timing Row (Compact with floating labels) */}
+            <div style={{ marginBottom: '16px' }}>
               <EventDateTimePicker
                 date={formData.eventDate}
                 startTime={formData.startTime}
@@ -348,9 +346,9 @@ export function BespokeInquiryForm({
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))',
-                gap: '12px 16px',
-                marginBottom: '24px',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))',
+                gap: '16px 20px',
+                marginBottom: '28px',
               }}
             >
               <div
@@ -392,7 +390,7 @@ export function BespokeInquiryForm({
                   onChange={(e) => handleFieldChange('guestCount', Number(e.target.value))}
                 />
                 <label htmlFor="inquiry-guestCount" className="floating-field-label">
-                  Estimated Guest Count <span>*</span>
+                  Estimated Guest Count <span style={{ color: '#592367' }}>*</span>
                 </label>
                 {fieldErrors.guestCount && (
                   <p className="floating-field-error-text">{fieldErrors.guestCount}</p>
@@ -403,18 +401,18 @@ export function BespokeInquiryForm({
             {/* ═══════════════════════════════════════════
                 PART 2: HOST CONTACT (FLOATING LABELS)
             ═══════════════════════════════════════════ */}
-            <div className="inquiry-section-header">
-              <h3 className="inquiry-section-title">Host Details</h3>
-              <span className="inquiry-section-step">Contact</span>
+            <div className="inquiry-section-header" style={{ marginBottom: '16px' }}>
+              <h3 className="inquiry-section-title">Host Contact Information</h3>
+              <span className="inquiry-section-step">Direct Coordination</span>
             </div>
 
             {/* First Name & Last Name (Floating Labels) */}
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))',
-                gap: '12px 16px',
-                marginBottom: '12px',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))',
+                gap: '16px 20px',
+                marginBottom: '16px',
               }}
             >
               <div
@@ -434,7 +432,7 @@ export function BespokeInquiryForm({
                   onChange={(e) => handleFieldChange('firstName', e.target.value)}
                 />
                 <label htmlFor="inquiry-firstName" className="floating-field-label">
-                  First Name <span>*</span>
+                  First Name <span style={{ color: '#592367' }}>*</span>
                 </label>
                 {fieldErrors.firstName && (
                   <p className="floating-field-error-text">{fieldErrors.firstName}</p>
@@ -458,7 +456,7 @@ export function BespokeInquiryForm({
                   onChange={(e) => handleFieldChange('lastName', e.target.value)}
                 />
                 <label htmlFor="inquiry-lastName" className="floating-field-label">
-                  Last Name <span>*</span>
+                  Last Name <span style={{ color: '#592367' }}>*</span>
                 </label>
                 {fieldErrors.lastName && (
                   <p className="floating-field-error-text">{fieldErrors.lastName}</p>
@@ -470,9 +468,9 @@ export function BespokeInquiryForm({
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))',
-                gap: '12px 16px',
-                marginBottom: '12px',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))',
+                gap: '16px 20px',
+                marginBottom: '16px',
               }}
             >
               <div
@@ -492,7 +490,7 @@ export function BespokeInquiryForm({
                   onChange={(e) => handleFieldChange('phone', e.target.value)}
                 />
                 <label htmlFor="inquiry-phone" className="floating-field-label">
-                  Telephone Number <span>*</span>
+                  Telephone Number <span style={{ color: '#592367' }}>*</span>
                 </label>
                 {fieldErrors.phone && (
                   <p className="floating-field-error-text">{fieldErrors.phone}</p>
@@ -516,7 +514,7 @@ export function BespokeInquiryForm({
                   onChange={(e) => handleFieldChange('email', e.target.value)}
                 />
                 <label htmlFor="inquiry-email" className="floating-field-label">
-                  Email Address <span>*</span>
+                  Email Address <span style={{ color: '#592367' }}>*</span>
                 </label>
                 {fieldErrors.email && (
                   <p className="floating-field-error-text">{fieldErrors.email}</p>
@@ -528,9 +526,9 @@ export function BespokeInquiryForm({
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))',
-                gap: '12px 16px',
-                marginBottom: '24px',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))',
+                gap: '16px 20px',
+                marginBottom: '28px',
               }}
             >
               <div
@@ -568,7 +566,7 @@ export function BespokeInquiryForm({
                   ))}
                 </select>
                 <label htmlFor="inquiry-referralSource" className="floating-field-label">
-                  How Did You Hear About Us?
+                  How Did You Hear About Ridgewells?
                 </label>
               </div>
             </div>
@@ -576,18 +574,18 @@ export function BespokeInquiryForm({
             {/* ═══════════════════════════════════════════
                 PART 3: CULINARY & BUDGET VISION
             ═══════════════════════════════════════════ */}
-            <div className="inquiry-section-header">
-              <h3 className="inquiry-section-title">Budget & Notes</h3>
-              <span className="inquiry-section-step">Parameters</span>
+            <div className="inquiry-section-header" style={{ marginBottom: '16px' }}>
+              <h3 className="inquiry-section-title">Culinary & Budget Vision</h3>
+              <span className="inquiry-section-step">Hospitality Parameters</span>
             </div>
 
-            {/* Minimalist Compact Budget Tiers */}
-            <div style={{ marginBottom: '14px' }}>
+            {/* Compact Budget Tiers */}
+            <div style={{ marginBottom: '16px' }}>
               <div
                 style={{
                   display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))',
-                  gap: '6px',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(110px, 1fr))',
+                  gap: '8px',
                 }}
               >
                 {BUDGET_TIERS.map((tier) => {
@@ -598,14 +596,15 @@ export function BespokeInquiryForm({
                       type="button"
                       onClick={() => handleFieldChange('budgetRange', tier.id)}
                       style={{
-                        padding: '9px 6px',
-                        fontSize: '12px',
-                        fontWeight: isSelected ? 600 : 400,
-                        border: isSelected ? '1px solid #000000' : '1px solid #E5E5E5',
-                        backgroundColor: isSelected ? '#000000' : '#FFFFFF',
-                        color: isSelected ? '#FFFFFF' : '#000000',
+                        padding: '9px 8px',
+                        borderRadius: '3px',
+                        fontSize: '12.5px',
+                        fontWeight: isSelected ? 600 : 500,
+                        border: isSelected ? '1.5px solid #592367' : '1px solid #DFD7E2',
+                        backgroundColor: isSelected ? '#592367' : '#FAF8FB',
+                        color: isSelected ? '#FFFFFF' : '#47404E',
                         cursor: 'pointer',
-                        transition: 'all 0.15s ease',
+                        transition: 'all 0.2s ease',
                         textAlign: 'center',
                       }}
                     >
@@ -621,7 +620,7 @@ export function BespokeInquiryForm({
               className={`floating-field-wrapper ${
                 focusedField === 'notes' || formData.notes ? 'is-floating' : ''
               } ${formData.notes ? 'has-value' : ''} ${focusedField === 'notes' ? 'is-focused' : ''}`}
-              style={{ marginBottom: '24px' }}
+              style={{ marginBottom: '28px' }}
             >
               <textarea
                 id="inquiry-notes"
@@ -633,54 +632,40 @@ export function BespokeInquiryForm({
                 onChange={(e) => handleFieldChange('notes', e.target.value)}
               />
               <label htmlFor="inquiry-notes" className="floating-field-label">
-                Culinary Preferences or Special Notes (Optional)
+                Culinary Preferences, Service Style, Dietary Needs, or Special Notes (Optional)
               </label>
             </div>
 
             {/* ═══════════════════════════════════════════
-                SUBMIT ACTION (SOLID BLACK LUXURY BUTTON)
+                SUBMIT ACTION & REASSURANCE
             ═══════════════════════════════════════════ */}
-            <div style={{ textAlign: 'center', maxWidth: '480px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', maxWidth: '540px', margin: '0 auto' }}>
               <button
                 type="submit"
                 disabled={isSubmitting}
+                className="btn-luxury-purple"
                 style={{
                   width: '100%',
-                  backgroundColor: '#000000',
-                  color: '#FFFFFF',
-                  border: '1px solid #000000',
-                  padding: '16px 32px',
-                  fontSize: '11px',
-                  fontWeight: 700,
-                  letterSpacing: '0.22em',
-                  textTransform: 'uppercase',
-                  cursor: isSubmitting ? 'not-allowed' : 'pointer',
-                  transition: 'background-color 0.2s ease, color 0.2s ease',
-                }}
-                onMouseEnter={(e) => {
-                  if (!isSubmitting) {
-                    e.currentTarget.style.backgroundColor = '#222222';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (!isSubmitting) {
-                    e.currentTarget.style.backgroundColor = '#000000';
-                  }
+                  maxWidth: '360px',
+                  padding: '15px 36px',
+                  fontSize: '12px',
+                  letterSpacing: '0.18em',
+                  borderRadius: '2px',
                 }}
               >
-                {isSubmitting ? 'SUBMITTING...' : 'REQUEST CONSULTATION ➔'}
+                {isSubmitting ? 'SUBMITTING CONSULTATION...' : 'REQUEST BESPOKE CONSULTATION ➔'}
               </button>
 
               <p
                 style={{
-                  marginTop: '10px',
-                  fontSize: '11.5px',
-                  color: '#777777',
+                  marginTop: '12px',
+                  fontSize: '12px',
+                  color: '#7D7584',
                   letterSpacing: '0.01em',
                   lineHeight: 1.5,
                 }}
               >
-                An event director will review your specifications and contact you within one business day.
+                Ridgewells respects your confidentiality. An event director will review your specifications and contact you within one business day.
               </p>
             </div>
           </div>

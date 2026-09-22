@@ -16,56 +16,39 @@ export interface EventDateTimePickerProps {
 
 const POPULAR_START_TIMES = [
   'Select start time...',
-  '8:00 AM',
-  '8:30 AM',
-  '9:00 AM',
-  '9:30 AM',
-  '10:00 AM',
-  '10:30 AM',
-  '11:00 AM',
+  '10:00 AM (Morning Brunch)',
+  '11:00 AM (Midday Lunch)',
   '11:30 AM',
-  '12:00 PM',
+  '12:00 PM (Luncheon)',
   '12:30 PM',
   '1:00 PM',
-  '1:30 PM',
-  '2:00 PM',
-  '2:30 PM',
+  '2:00 PM (Afternoon)',
   '3:00 PM',
-  '3:30 PM',
-  '4:00 PM',
-  '4:30 PM',
-  '5:00 PM',
+  '4:00 PM (Late Afternoon)',
+  '5:00 PM (Cocktail Hour)',
   '5:30 PM',
-  '6:00 PM',
+  '6:00 PM (Evening Reception)',
   '6:30 PM',
-  '7:00 PM',
+  '7:00 PM (Gala Dinner)',
   '7:30 PM',
   '8:00 PM',
-  '8:30 PM',
-  '9:00 PM',
 ];
 
 const POPULAR_END_TIMES = [
   'Select end time...',
-  '11:00 AM',
-  '12:00 PM',
-  '1:00 PM',
   '2:00 PM',
   '3:00 PM',
   '4:00 PM',
-  '5:00 PM',
-  '6:00 PM',
   '7:00 PM',
   '8:00 PM',
   '9:00 PM',
   '9:30 PM',
-  '10:00 PM',
+  '10:00 PM (Standard Evening)',
   '10:30 PM',
-  '11:00 PM',
+  '11:00 PM (Late Night)',
   '11:30 PM',
-  '12:00 AM',
-  '1:00 AM',
-  '2:00 AM',
+  '12:00 AM (Midnight)',
+  '1:00 AM (Afterparty)',
 ];
 
 const DAYS_OF_WEEK = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
@@ -190,11 +173,11 @@ export function EventDateTimePicker({
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))',
-          gap: '12px 16px',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))',
+          gap: '16px 20px',
         }}
       >
-        {/* 1. Event Date Picker with Minimalist Black/White Floating Label */}
+        {/* 1. Event Date Picker with Floating Label */}
         <div style={{ position: 'relative' }} ref={calendarRef}>
           <div
             className={`floating-field-wrapper ${date || isCalendarOpen ? 'is-floating' : ''} ${date ? 'has-value' : ''} ${isCalendarOpen ? 'is-focused' : ''} ${dateError ? 'has-error' : ''}`}
@@ -210,17 +193,17 @@ export function EventDateTimePicker({
                 justifyContent: 'space-between',
                 textAlign: 'left',
                 cursor: 'pointer',
-                color: date ? '#000000' : 'transparent',
+                color: date ? '#1E1A22' : 'transparent',
                 fontWeight: date ? 500 : 400,
               }}
             >
               <span>{displayDateText() || ''}</span>
               <svg
-                width="15"
-                height="15"
+                width="16"
+                height="16"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#000000"
+                stroke="#592367"
                 strokeWidth="1.6"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -234,7 +217,7 @@ export function EventDateTimePicker({
             </button>
 
             <label htmlFor={`${idPrefix}-date`} className="floating-field-label">
-              Target Event Date {required && <span>*</span>}
+              Target Event Date {required && <span style={{ color: '#592367' }}>*</span>}
             </label>
 
             {/* Hidden native input for form accessibility */}
@@ -248,26 +231,34 @@ export function EventDateTimePicker({
           </div>
 
           {dateError && (
-            <p className="floating-field-error-text">
+            <p
+              style={{
+                color: '#B91C1C',
+                fontSize: '11.5px',
+                marginTop: '6px',
+                fontWeight: 500,
+                letterSpacing: '0.01em',
+              }}
+            >
               {dateError}
             </p>
           )}
 
-          {/* Minimalist Black & White Calendar Popover */}
+          {/* Interactive Luxury Calendar Popover */}
           {isCalendarOpen && (
             <div
               style={{
                 position: 'absolute',
-                top: 'calc(100% + 4px)',
+                top: 'calc(100% + 6px)',
                 left: 0,
                 zIndex: 50,
                 backgroundColor: '#FFFFFF',
-                borderRadius: '0px',
-                boxShadow: '0 8px 30px rgba(0, 0, 0, 0.1)',
-                border: '1px solid #E5E5E5',
-                padding: '16px',
-                width: '300px',
-                maxWidth: 'calc(100vw - 32px)',
+                borderRadius: '4px',
+                boxShadow: '0 16px 40px rgba(89, 35, 103, 0.16), 0 4px 12px rgba(0,0,0,0.08)',
+                border: '1px solid rgba(89, 35, 103, 0.18)',
+                padding: '20px',
+                width: '320px',
+                maxWidth: 'calc(100vw - 40px)',
               }}
             >
               {/* Header: Month & Year with Prev/Next Controls */}
@@ -276,23 +267,24 @@ export function EventDateTimePicker({
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  marginBottom: '14px',
+                  marginBottom: '16px',
                 }}
               >
                 <button
                   type="button"
                   onClick={handlePrevMonth}
                   style={{
-                    width: '28px',
-                    height: '28px',
-                    backgroundColor: '#FFFFFF',
-                    color: '#000000',
+                    width: '30px',
+                    height: '30px',
+                    borderRadius: '50%',
+                    backgroundColor: '#FAF5FB',
+                    color: '#592367',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    fontWeight: 600,
+                    fontWeight: 700,
                     fontSize: '14px',
-                    border: '1px solid #E5E5E5',
+                    border: '1px solid rgba(89, 35, 103, 0.12)',
                   }}
                   title="Previous Month"
                 >
@@ -302,9 +294,9 @@ export function EventDateTimePicker({
                 <span
                   style={{
                     fontFamily: 'var(--font-serif)',
-                    fontSize: '15px',
-                    fontWeight: 500,
-                    color: '#000000',
+                    fontSize: '16px',
+                    fontWeight: 600,
+                    color: '#592367',
                   }}
                 >
                   {MONTH_NAMES[viewMonth]} {viewYear}
@@ -314,16 +306,17 @@ export function EventDateTimePicker({
                   type="button"
                   onClick={handleNextMonth}
                   style={{
-                    width: '28px',
-                    height: '28px',
-                    backgroundColor: '#FFFFFF',
-                    color: '#000000',
+                    width: '30px',
+                    height: '30px',
+                    borderRadius: '50%',
+                    backgroundColor: '#FAF5FB',
+                    color: '#592367',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    fontWeight: 600,
+                    fontWeight: 700,
                     fontSize: '14px',
-                    border: '1px solid #E5E5E5',
+                    border: '1px solid rgba(89, 35, 103, 0.12)',
                   }}
                   title="Next Month"
                 >
@@ -337,16 +330,16 @@ export function EventDateTimePicker({
                   display: 'grid',
                   gridTemplateColumns: 'repeat(7, 1fr)',
                   textAlign: 'center',
-                  marginBottom: '6px',
+                  marginBottom: '8px',
                 }}
               >
                 {DAYS_OF_WEEK.map((d, i) => (
                   <span
                     key={i}
                     style={{
-                      fontSize: '10px',
+                      fontSize: '11px',
                       fontWeight: 700,
-                      color: '#777777',
+                      color: '#8C8692',
                       textTransform: 'uppercase',
                     }}
                   >
@@ -360,13 +353,13 @@ export function EventDateTimePicker({
                 style={{
                   display: 'grid',
                   gridTemplateColumns: 'repeat(7, 1fr)',
-                  gap: '2px',
+                  gap: '4px',
                   textAlign: 'center',
                 }}
               >
                 {/* Empty slots for first week padding */}
                 {Array.from({ length: firstDayOfMonth }).map((_, i) => (
-                  <div key={`empty-${i}`} style={{ height: '30px' }} />
+                  <div key={`empty-${i}`} style={{ height: '34px' }} />
                 ))}
 
                 {/* Day numbers */}
@@ -383,37 +376,39 @@ export function EventDateTimePicker({
                       disabled={past}
                       onClick={() => handleSelectDay(day)}
                       style={{
-                        height: '30px',
-                        width: '30px',
+                        height: '34px',
+                        width: '34px',
                         margin: '0 auto',
-                        borderRadius: '0px',
+                        borderRadius: '50%',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        fontSize: '12px',
+                        fontSize: '13px',
                         fontWeight: selected || isToday ? 700 : 400,
                         backgroundColor: selected
-                          ? '#000000'
+                          ? '#592367'
                           : isToday
-                          ? '#F5F5F5'
+                          ? '#FAF5FB'
                           : 'transparent',
                         color: selected
                           ? '#FFFFFF'
                           : past
-                          ? '#CCCCCC'
-                          : '#000000',
-                        border: isToday && !selected ? '1px solid #000000' : 'none',
+                          ? '#D0CBD4'
+                          : isToday
+                          ? '#592367'
+                          : '#181519',
+                        border: isToday && !selected ? '1px solid #592367' : 'none',
                         cursor: past ? 'not-allowed' : 'pointer',
                         transition: 'all 0.15s ease',
                       }}
                       onMouseEnter={(e) => {
                         if (!selected && !past) {
-                          e.currentTarget.style.backgroundColor = '#EEEEEE';
+                          e.currentTarget.style.backgroundColor = '#F3E7F6';
                         }
                       }}
                       onMouseLeave={(e) => {
                         if (!selected && !past) {
-                          e.currentTarget.style.backgroundColor = isToday ? '#F5F5F5' : 'transparent';
+                          e.currentTarget.style.backgroundColor = isToday ? '#FAF5FB' : 'transparent';
                         }
                       }}
                     >
@@ -429,10 +424,10 @@ export function EventDateTimePicker({
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
-                  marginTop: '12px',
-                  paddingTop: '8px',
-                  borderTop: '1px solid #EBEBEB',
-                  fontSize: '11px',
+                  marginTop: '16px',
+                  paddingTop: '12px',
+                  borderTop: '1px solid #F0EAF2',
+                  fontSize: '12px',
                 }}
               >
                 <button
@@ -444,7 +439,7 @@ export function EventDateTimePicker({
                     handleSelectDay(todayDate.getDate());
                   }}
                   style={{
-                    color: '#000000',
+                    color: '#592367',
                     fontWeight: 600,
                     textDecoration: 'underline',
                   }}
@@ -459,7 +454,7 @@ export function EventDateTimePicker({
                     setIsCalendarOpen(false);
                   }}
                   style={{
-                    color: '#777777',
+                    color: '#8C8692',
                   }}
                 >
                   Clear
@@ -469,7 +464,7 @@ export function EventDateTimePicker({
           )}
         </div>
 
-        {/* 2. Start Time Selector (Pure Clean Times, No Extra Text) */}
+        {/* 2. Start Time Selector with Floating Label */}
         <div>
           <div className="floating-field-wrapper is-floating has-value">
             <select
@@ -490,7 +485,7 @@ export function EventDateTimePicker({
           </div>
         </div>
 
-        {/* 3. End Time Selector (Pure Clean Times, No Extra Text) */}
+        {/* 3. End Time Selector with Floating Label */}
         <div>
           <div className="floating-field-wrapper is-floating has-value">
             <select
