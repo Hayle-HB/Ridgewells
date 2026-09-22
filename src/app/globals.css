@@ -464,11 +464,11 @@ button {
 
 .inquiry-text-input::placeholder,
 .inquiry-textarea::placeholder {
-  color: #9C94A2;
+  color: #999999;
   font-size: 14px;
 }
 
-/* Luxury Floating Label Field Styling */
+/* Minimalist Luxury Black & White Floating Label Field Styling */
 .floating-field-wrapper {
   position: relative;
   width: 100%;
@@ -477,37 +477,37 @@ button {
 .floating-field-input,
 .floating-field-select {
   width: 100%;
-  height: 52px;
-  padding: 20px 16px 5px 16px;
-  border: 1px solid #DFD8E3;
-  border-radius: 3px;
-  font-size: 14.5px;
+  height: 50px;
+  padding: 18px 14px 4px 14px;
+  border: 1px solid #E5E5E5;
+  border-radius: 0px;
+  font-size: 14px;
   font-family: var(--font-sans);
-  color: #1E1A22;
-  background-color: #FCFBFD;
+  color: #000000;
+  background-color: #FFFFFF;
   outline: none;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .floating-field-textarea {
   width: 100%;
-  min-height: 80px;
-  padding: 22px 16px 8px 16px;
-  border: 1px solid #DFD8E3;
-  border-radius: 3px;
+  min-height: 74px;
+  padding: 20px 14px 6px 14px;
+  border: 1px solid #E5E5E5;
+  border-radius: 0px;
   font-size: 14px;
   font-family: var(--font-sans);
-  color: #1E1A22;
-  background-color: #FCFBFD;
+  color: #000000;
+  background-color: #FFFFFF;
   outline: none;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
   resize: vertical;
 }
 
 .floating-field-input:hover,
 .floating-field-select:hover,
 .floating-field-textarea:hover {
-  border-color: #C7BACD;
+  border-color: #999999;
 }
 
 .floating-field-input:focus,
@@ -517,29 +517,29 @@ button {
 .floating-field-wrapper.is-focused .floating-field-select,
 .floating-field-wrapper.is-focused .floating-field-textarea {
   background-color: #FFFFFF;
-  border-color: var(--brand-purple);
-  box-shadow: 0 0 0 3px rgba(89, 35, 103, 0.08);
+  border-color: #000000;
+  box-shadow: 0 0 0 1px #000000;
 }
 
 .floating-field-label {
   position: absolute;
-  left: 16px;
+  left: 14px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 400;
-  color: #8A8292;
+  color: #777777;
   pointer-events: none;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
   user-select: none;
   white-space: nowrap;
-  max-width: calc(100% - 32px);
+  max-width: calc(100% - 28px);
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .floating-field-textarea ~ .floating-field-label {
-  top: 18px;
+  top: 16px;
   transform: none;
 }
 
@@ -548,24 +548,24 @@ button {
 .floating-field-input:focus ~ .floating-field-label,
 .floating-field-select:focus ~ .floating-field-label,
 .floating-field-textarea:focus ~ .floating-field-label {
-  top: 7px;
+  top: 6px;
   transform: translateY(0);
-  font-size: 9.5px;
+  font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--brand-purple);
+  color: #000000;
 }
 
 .floating-field-wrapper.is-floating.has-value:not(.is-focused) .floating-field-label {
-  color: #7D7584;
+  color: #666666;
 }
 
 .floating-field-wrapper.has-error .floating-field-input,
 .floating-field-wrapper.has-error .floating-field-select,
 .floating-field-wrapper.has-error .floating-field-textarea {
   border-color: #B91C1C;
-  box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.08);
+  box-shadow: 0 0 0 1px #B91C1C;
 }
 
 .floating-field-wrapper.has-error .floating-field-label {
@@ -580,11 +580,11 @@ button {
   letter-spacing: 0.01em;
 }
 
-/* Luxury Form Section Header */
+/* Minimalist Form Section Header */
 .inquiry-section-header {
-  margin-bottom: 22px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(89, 35, 103, 0.1);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #EBEBEB;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -594,11 +594,19 @@ button {
 
 .inquiry-section-title {
   font-family: var(--font-serif);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
-  color: #35133E;
+  color: #000000;
   letter-spacing: -0.01em;
   margin: 0;
+}
+
+.inquiry-section-step {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #777777;
 }
 
 .inquiry-section-step {
