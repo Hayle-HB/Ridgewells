@@ -173,42 +173,52 @@ export function EventDateTimePicker({
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))',
-          gap: '24px 32px',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))',
+          gap: '16px 20px',
         }}
       >
-        {/* 1. Event Date Picker */}
+        {/* 1. Event Date Picker with Floating Label */}
         <div style={{ position: 'relative' }} ref={calendarRef}>
-          <label
-            htmlFor={`${idPrefix}-date`}
-            className="inquiry-field-label"
+          <div
+            className={`floating-field-wrapper ${date || isCalendarOpen ? 'is-floating' : ''} ${date ? 'has-value' : ''} ${isCalendarOpen ? 'is-focused' : ''} ${dateError ? 'has-error' : ''}`}
           >
-            Event Date {required && <span className="required-star">*</span>}
-          </label>
-
-          <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
             <button
               type="button"
               id={`${idPrefix}-date`}
               onClick={() => setIsCalendarOpen(!isCalendarOpen)}
-              className="inquiry-text-input"
+              className="floating-field-input"
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 textAlign: 'left',
                 cursor: 'pointer',
-                borderColor: dateError ? '#DC2626' : undefined,
-                boxShadow: dateError ? '0 0 0 3px rgba(220, 38, 38, 0.12)' : undefined,
-                color: date ? '#181519' : '#8C8692',
+                color: date ? '#1E1A22' : 'transparent',
                 fontWeight: date ? 500 : 400,
               }}
             >
-              <span>{displayDateText() || 'Select event date...'}</span>
-              <span style={{ fontSize: '16px', color: '#592367', flexShrink: 0, marginLeft: '8px' }}>
-                📅
-              </span>
+              <span>{displayDateText() || ''}</span>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#592367"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                style={{ flexShrink: 0, marginLeft: '8px' }}
+              >
+                <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                <line x1="16" x2="16" y1="2" y2="6" />
+                <line x1="8" x2="8" y1="2" y2="6" />
+                <line x1="3" x2="21" y1="10" y2="10" />
+              </svg>
             </button>
+
+            <label htmlFor={`${idPrefix}-date`} className="floating-field-label">
+              Target Event Date {required && <span style={{ color: '#592367' }}>*</span>}
+            </label>
 
             {/* Hidden native input for form accessibility */}
             <input
@@ -223,16 +233,14 @@ export function EventDateTimePicker({
           {dateError && (
             <p
               style={{
-                color: '#DC2626',
-                fontSize: '12.5px',
+                color: '#B91C1C',
+                fontSize: '11.5px',
                 marginTop: '6px',
                 fontWeight: 500,
-                display: 'flex',
-                alignItems: 'center',
-                gap: '4px',
+                letterSpacing: '0.01em',
               }}
             >
-              <span>⚠️</span> {dateError}
+              {dateError}
             </p>
           )}
 
@@ -456,48 +464,46 @@ export function EventDateTimePicker({
           )}
         </div>
 
-        {/* 2. Start Time Selector */}
+        {/* 2. Start Time Selector with Floating Label */}
         <div>
-          <label
-            htmlFor={`${idPrefix}-start-time`}
-            className="inquiry-field-label"
-          >
-            Event Start Time
-          </label>
-          <select
-            id={`${idPrefix}-start-time`}
-            className="inquiry-select-input"
-            value={startTime}
-            onChange={(e) => onStartTimeChange(e.target.value)}
-          >
-            {POPULAR_START_TIMES.map((t, i) => (
-              <option key={i} value={i === 0 ? '' : t}>
-                {t}
-              </option>
-            ))}
-          </select>
+          <div className="floating-field-wrapper is-floating has-value">
+            <select
+              id={`${idPrefix}-start-time`}
+              className="floating-field-select"
+              value={startTime}
+              onChange={(e) => onStartTimeChange(e.target.value)}
+            >
+              {POPULAR_START_TIMES.map((t, i) => (
+                <option key={i} value={i === 0 ? '' : t}>
+                  {t}
+                </option>
+              ))}
+            </select>
+            <label htmlFor={`${idPrefix}-start-time`} className="floating-field-label">
+              Start Time
+            </label>
+          </div>
         </div>
 
-        {/* 3. End Time Selector */}
+        {/* 3. End Time Selector with Floating Label */}
         <div>
-          <label
-            htmlFor={`${idPrefix}-end-time`}
-            className="inquiry-field-label"
-          >
-            Event End Time
-          </label>
-          <select
-            id={`${idPrefix}-end-time`}
-            className="inquiry-select-input"
-            value={endTime}
-            onChange={(e) => onEndTimeChange(e.target.value)}
-          >
-            {POPULAR_END_TIMES.map((t, i) => (
-              <option key={i} value={i === 0 ? '' : t}>
-                {t}
-              </option>
-            ))}
-          </select>
+          <div className="floating-field-wrapper is-floating has-value">
+            <select
+              id={`${idPrefix}-end-time`}
+              className="floating-field-select"
+              value={endTime}
+              onChange={(e) => onEndTimeChange(e.target.value)}
+            >
+              {POPULAR_END_TIMES.map((t, i) => (
+                <option key={i} value={i === 0 ? '' : t}>
+                  {t}
+                </option>
+              ))}
+            </select>
+            <label htmlFor={`${idPrefix}-end-time`} className="floating-field-label">
+              End Time
+            </label>
+          </div>
         </div>
       </div>
     </div>

@@ -153,13 +153,25 @@ export function CulinarySection({ onOpenInquiry }: CulinarySectionProps) {
               </p>
             </div>
 
-            <Button
-              variant="purple"
-              arrow
-              onClick={() => onOpenInquiry({ eventType: 'TASTING' })}
-            >
-              Schedule Bethesda Tasting Suite
-            </Button>
+            <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center' }}>
+              <Button
+                variant="purple"
+                arrow
+                onClick={() => onOpenInquiry({ eventType: 'TASTING' })}
+              >
+                Schedule Bethesda Tasting Suite
+              </Button>
+              <a
+                href="https://ridgewellscatering.gethoneycart.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration: 'none' }}
+              >
+                <Button variant="outline">
+                  Browse Catering Menus ↗
+                </Button>
+              </a>
+            </div>
           </div>
         </div>
       </div>

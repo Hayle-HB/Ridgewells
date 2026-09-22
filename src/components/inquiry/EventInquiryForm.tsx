@@ -14,35 +14,35 @@ const EVENT_TYPES = [
   {
     id: 'CORPORATE',
     label: 'Corporate Gala & Summit',
-    icon: '🏛️',
+    icon: '✦',
     desc: 'Annual galas, diplomatic dinners, board meetings & conferences.',
     recommendedBudgetMin: 25000,
   },
   {
     id: 'WEDDING',
     label: 'Wedding & Celebration',
-    icon: '💍',
+    icon: '✦',
     desc: 'Receptions, rehearsal dinners, ceremonies & bridal milestones.',
     recommendedBudgetMin: 30000,
   },
   {
     id: 'GALA_SOCIAL',
     label: 'Milestone Social Gathering',
-    icon: '✨',
+    icon: '✦',
     desc: 'Anniversary galas, private estate soirees & holiday celebrations.',
     recommendedBudgetMin: 15000,
   },
   {
     id: 'MAJOR_EVENT',
     label: 'Major Sporting Event',
-    icon: '🏆',
+    icon: '✦',
     desc: 'Championship hospitality chalets, USGA tourneys & invitational scales.',
     recommendedBudgetMin: 60000,
   },
   {
     id: 'TASTING',
     label: 'Bethesda Tasting Suite',
-    icon: '🍷',
+    icon: '✦',
     desc: 'Private chef tastings, wine pairings & tablescape consultations.',
     recommendedBudgetMin: 5000,
   },
@@ -433,7 +433,7 @@ export function EventInquiryForm({
                 margin: '0 auto 28px',
               }}
             >
-              ⚠️ {errorMessage}
+              {errorMessage}
             </div>
           )}
 
@@ -602,7 +602,7 @@ export function EventInquiryForm({
                             {venue.name}
                           </h4>
                           <p style={{ fontSize: '11.5px', color: '#736D78', marginTop: '4px' }}>
-                            📍 {venue.location}
+                            {venue.location}
                           </p>
                           <div style={{ marginTop: 'auto', paddingTop: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '11px', fontWeight: 600, color: '#9F8055' }}>
                             <span>{venue.capacity}</span>
@@ -878,7 +878,7 @@ export function EventInquiryForm({
                     />
                     {fieldErrors.firstName && (
                       <p style={{ color: '#DC2626', fontSize: '12px', marginTop: '4px', fontWeight: 500 }}>
-                        ⚠️ {fieldErrors.firstName}
+                        {fieldErrors.firstName}
                       </p>
                     )}
                   </div>
@@ -905,7 +905,7 @@ export function EventInquiryForm({
                     />
                     {fieldErrors.lastName && (
                       <p style={{ color: '#DC2626', fontSize: '12px', marginTop: '4px', fontWeight: 500 }}>
-                        ⚠️ {fieldErrors.lastName}
+                        {fieldErrors.lastName}
                       </p>
                     )}
                   </div>
@@ -941,7 +941,7 @@ export function EventInquiryForm({
                     />
                     {fieldErrors.email && (
                       <p style={{ color: '#DC2626', fontSize: '12px', marginTop: '4px', fontWeight: 500 }}>
-                        ⚠️ {fieldErrors.email}
+                        {fieldErrors.email}
                       </p>
                     )}
                   </div>
@@ -968,7 +968,7 @@ export function EventInquiryForm({
                     />
                     {fieldErrors.phone && (
                       <p style={{ color: '#DC2626', fontSize: '12px', marginTop: '4px', fontWeight: 500 }}>
-                        ⚠️ {fieldErrors.phone}
+                        {fieldErrors.phone}
                       </p>
                     )}
                   </div>
@@ -1065,7 +1065,7 @@ export function EventInquiryForm({
                 </Button>
 
                 <p style={{ fontSize: '12px', color: '#736D78', textAlign: 'center', marginTop: '12px' }}>
-                  🔒 Direct white-glove confidentiality. Response guaranteed within 1 business day.
+                  Direct white-glove confidentiality. Response guaranteed within 1 business day.
                 </p>
               </div>
             </div>
@@ -1195,7 +1195,7 @@ export function EventInquiryForm({
                   }}
                 >
                   <p style={{ fontWeight: 700, color: '#592367', marginBottom: '2px' }}>
-                    🏛️ Bethesda Director Assignment:
+                    Bethesda Director Assignment:
                   </p>
                   <p>
                     {formData.eventType === 'WEDDING'
@@ -1225,7 +1225,7 @@ export function EventInquiryForm({
                   Our concierge team is available Monday through Friday, 9:00 AM to 5:00 PM.
                 </p>
                 <p style={{ fontWeight: 700, color: '#592367' }}>
-                  <a href="tel:+13016521515" style={{ color: '#592367' }}>📞 (301) 652-1515</a>
+                  <a href="tel:+13016521515" style={{ color: '#592367' }}>(301) 652-1515</a>
                 </p>
                 <p style={{ fontSize: '12px', color: '#736D78', marginTop: '4px' }}>
                   5522 Dorsey Lane, Bethesda, MD 20816

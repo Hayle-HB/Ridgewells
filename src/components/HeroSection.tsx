@@ -21,7 +21,7 @@ const HERO_SLIDES = [
     title: 'Monumental Grandeur on Constitution Avenue.',
     description: 'Neoclassical architectural jewel featuring 65-foot gilded ceilings, fluted limestone columns, and capacity for up to 1,000 guests in the Great Hall.',
     caption: 'Neoclassical Great Hall with Violet Architectural Lighting',
-    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=2560&q=95',
+    image: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=2560&q=95',
   },
   {
     id: 3,

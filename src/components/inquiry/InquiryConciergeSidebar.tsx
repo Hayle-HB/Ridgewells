@@ -7,216 +7,129 @@ export function InquiryConciergeSidebar() {
     <aside
       style={{
         position: 'sticky',
-        top: '100px',
+        top: '110px',
         backgroundColor: '#FFFFFF',
         border: '1px solid rgba(89, 35, 103, 0.14)',
-        borderRadius: '3px',
+        borderRadius: '4px',
         overflow: 'hidden',
         boxShadow: '0 8px 30px rgba(89, 35, 103, 0.05)',
       }}
     >
-      {/* 1. Top Image Banner (Andrew W. Mellon Great Hall & Ridgewells Tasting Showcase) */}
+      {/* Top Heritage Header */}
       <div
         style={{
-          position: 'relative',
-          height: '180px',
-          backgroundImage: `url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=85')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundColor: '#42164D',
+          color: '#FFFFFF',
+          padding: '18px 22px',
+          borderBottom: '2px solid #C5A880',
         }}
       >
-        <div
+        <span
           style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'linear-gradient(180deg, rgba(42, 9, 50, 0.2) 0%, rgba(42, 9, 50, 0.75) 100%)',
+            fontSize: '9.5px',
+            fontWeight: 700,
+            letterSpacing: '0.22em',
+            textTransform: 'uppercase',
+            color: '#C5A880',
+            display: 'block',
+            marginBottom: '4px',
           }}
-        />
-
-        {/* Established Badge */}
-        <div style={{ position: 'absolute', top: '14px', left: '16px' }}>
-          <span
-            style={{
-              backgroundColor: 'rgba(89, 35, 103, 0.85)',
-              backdropFilter: 'blur(6px)',
-              color: '#F7EFE4',
-              border: '1px solid rgba(197, 168, 128, 0.5)',
-              padding: '4px 10px',
-              borderRadius: '2px',
-              fontSize: '10px',
-              fontWeight: 800,
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-            }}
-          >
-            EST. 1928 • WASHINGTON DC
-          </span>
-        </div>
-
-        {/* Caption Over Image */}
-        <div style={{ position: 'absolute', bottom: '14px', left: '16px', right: '16px', color: '#FFFFFF' }}>
-          <h4
-            style={{
-              fontFamily: 'var(--font-serif)',
-              fontSize: '18px',
-              fontWeight: 500,
-              color: '#FFFFFF',
-              lineHeight: 1.2,
-              marginBottom: '2px',
-            }}
-          >
-            Direct Concierge & Planning Desk
-          </h4>
-          <p style={{ fontSize: '11.5px', color: 'rgba(255, 255, 255, 0.88)' }}>
-            Bethesda Flagship Showroom & Landmark Venues
-          </p>
-        </div>
+        >
+          DIRECT CONCIERGE
+        </span>
+        <h4
+          style={{
+            fontFamily: 'var(--font-serif)',
+            fontSize: '18px',
+            fontWeight: 400,
+            color: '#FFFFFF',
+            margin: 0,
+            letterSpacing: '-0.01em',
+          }}
+        >
+          Prefer to Speak Directly?
+        </h4>
       </div>
 
-      {/* 2. Direct Concierge Hotline Box */}
-      <div
-        style={{
-          padding: '24px',
-          backgroundColor: '#FAF5FB',
-          borderBottom: '1px solid rgba(89, 35, 103, 0.1)',
-        }}
-      >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-          <span className="pulse-dot" />
-          <span
-            style={{
-              fontSize: '11px',
-              fontWeight: 800,
-              letterSpacing: '0.16em',
-              textTransform: 'uppercase',
-              color: '#592367',
-            }}
-          >
-            SPEAK DIRECTLY WITH A DIRECTOR
-          </span>
-        </div>
-
+      {/* Direct Contact Details */}
+      <div style={{ padding: '24px 22px' }}>
         <a
           href="tel:+13016521515"
           style={{
             display: 'block',
-            fontSize: '24px',
-            fontWeight: 800,
+            fontSize: '23px',
+            fontWeight: 400,
             fontFamily: 'var(--font-serif)',
-            color: '#592367',
-            marginBottom: '6px',
-            letterSpacing: '0.01em',
+            color: '#42164D',
+            marginBottom: '4px',
+            letterSpacing: '-0.01em',
+            textDecoration: 'none',
           }}
         >
           (301) 652-1515
         </a>
-
-        <p style={{ fontSize: '12.5px', color: '#524C58', lineHeight: 1.5, marginBottom: '14px' }}>
-          Monday through Friday, 9:00 AM – 5:30 PM EST. Private tastings & walkthroughs by appointment.
+        <p style={{ fontSize: '12px', color: '#736B79', margin: '0 0 16px 0', letterSpacing: '0.01em' }}>
+          Monday – Friday, 9:00 AM – 5:00 PM EST
         </p>
 
-        <a
-          href="mailto:info@ridgewells.com"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '6px',
-            fontSize: '13px',
-            fontWeight: 600,
-            color: '#592367',
-            textDecoration: 'underline',
-          }}
-        >
-          <span>✉</span> info@ridgewells.com
-        </a>
-      </div>
+        <div style={{ height: '1px', backgroundColor: 'rgba(89, 35, 103, 0.08)', margin: '16px 0' }} />
 
-      {/* 3. Bethesda Flagship Tasting Suites */}
-      <div style={{ padding: '24px', borderBottom: '1px solid rgba(89, 35, 103, 0.08)' }}>
-        <span
-          style={{
-            fontSize: '10px',
-            fontWeight: 800,
-            letterSpacing: '0.18em',
-            textTransform: 'uppercase',
-            color: '#9F8055',
-            display: 'block',
-            marginBottom: '6px',
-          }}
-        >
-          FLAGSHIP SHOWROOM & TASTING ROOM
-        </span>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', fontSize: '13px', color: '#453E4B' }}>
+          {/* Email */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#592367" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+              <rect width="20" height="16" x="2" y="4" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
+            <a href="mailto:info@ridgewells.com" style={{ color: '#592367', fontWeight: 600, textDecoration: 'none' }}>
+              info@ridgewells.com
+            </a>
+          </div>
 
-        <h4
-          style={{
-            fontFamily: 'var(--font-serif)',
-            fontSize: '17px',
-            fontWeight: 600,
-            color: '#592367',
-            marginBottom: '6px',
-          }}
-        >
-          5522 Dorsey Lane, Bethesda, MD
-        </h4>
-
-        <p style={{ fontSize: '13px', color: '#47434B', lineHeight: 1.6 }}>
-          Join our culinary team for private chef tastings, custom tablescape mockups, and sommelier wine pairings.
-        </p>
-      </div>
-
-      {/* 4. Credentials & Hallmarks */}
-      <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '18px' }}>
-        <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-          <span style={{ fontSize: '18px', color: '#592367', flexShrink: 0, marginTop: '2px' }}>🏛️</span>
-          <div>
-            <h5 style={{ fontSize: '13.5px', fontWeight: 700, color: '#181519', marginBottom: '2px' }}>
-              Andrew W. Mellon Auditorium
-            </h5>
-            <p style={{ fontSize: '12.5px', color: '#524C58', lineHeight: 1.5 }}>
-              Exclusive manager & caterer of Washington DC’s grandest neoclassical Great Hall on Constitution Ave.
-            </p>
+          {/* Bethesda Address */}
+          <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#592367" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" style={{ marginTop: '2px', flexShrink: 0 }}>
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            <div style={{ lineHeight: 1.5 }}>
+              <strong style={{ color: '#2F2834', fontWeight: 600 }}>Bethesda Showroom & Tasting Kitchen:</strong>
+              <br />
+              <span style={{ color: '#6A6270' }}>5522 Dorsey Lane, Bethesda, MD 20816</span>
+            </div>
           </div>
         </div>
 
-        <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-          <span style={{ fontSize: '18px', color: '#592367', flexShrink: 0, marginTop: '2px' }}>👨‍🍳</span>
-          <div>
-            <h5 style={{ fontSize: '13.5px', fontWeight: 700, color: '#181519', marginBottom: '2px' }}>
-              Executive Chef Kashif Browne
-            </h5>
-            <p style={{ fontSize: '12.5px', color: '#524C58', lineHeight: 1.5 }}>
-              Former White House Sous Chef leading certified allergen isolation and seasonal Mid-Atlantic gastronomy.
-            </p>
-          </div>
-        </div>
+        <div style={{ height: '1px', backgroundColor: 'rgba(89, 35, 103, 0.08)', margin: '20px 0' }} />
 
-        <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-          <span style={{ fontSize: '18px', color: '#592367', flexShrink: 0, marginTop: '2px' }}>⏱️</span>
-          <div>
-            <h5 style={{ fontSize: '13.5px', fontWeight: 700, color: '#181519', marginBottom: '2px' }}>
-              1 Business Day Response
-            </h5>
-            <p style={{ fontSize: '12.5px', color: '#524C58', lineHeight: 1.5 }}>
-              A dedicated Senior Catering Director is assigned to review your date and details upon submission.
-            </p>
-          </div>
+        {/* White-Glove Editorial Guarantee */}
+        <div style={{ backgroundColor: '#FAF6FA', padding: '14px 16px', borderRadius: '3px', border: '1px solid rgba(89, 35, 103, 0.08)' }}>
+          <span
+            style={{
+              fontSize: '10px',
+              fontWeight: 700,
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: '#9F8055',
+              display: 'block',
+              marginBottom: '6px',
+            }}
+          >
+            THE RIDGEWELLS STANDARD
+          </span>
+          <p
+            style={{
+              fontFamily: 'var(--font-editorial)',
+              fontSize: '14px',
+              fontStyle: 'italic',
+              color: '#493E50',
+              lineHeight: 1.55,
+              margin: 0,
+            }}
+          >
+            &ldquo;Celebrating distinctive events and timeless hospitality across the Capital for nearly a century.&rdquo;
+          </p>
         </div>
-      </div>
-
-      {/* 5. Bottom Brand Footnote */}
-      <div
-        style={{
-          padding: '14px 24px',
-          backgroundColor: '#FAF8F5',
-          borderTop: '1px solid rgba(197, 168, 128, 0.3)',
-          textAlign: 'center',
-          fontSize: '11.5px',
-          color: '#7A6448',
-          fontWeight: 600,
-          letterSpacing: '0.04em',
-        }}
-      >
-        ✦ Ridgewells Hospitality Group • Nearly 100 Years of Excellence ✦
       </div>
     </aside>
   );

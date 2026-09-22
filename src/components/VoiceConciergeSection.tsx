@@ -251,7 +251,11 @@ export function VoiceConciergeSection() {
                     justifyContent: 'center',
                     fontSize: '24px',
                   }}>
-                    🎙️
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
+                      <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                      <line x1="12" x2="12" y1="19" y2="22" />
+                    </svg>
                   </div>
                   <div>
                     <p style={{ fontFamily: 'var(--font-serif)', fontSize: '18px', color: '#FFFFFF', marginBottom: '4px' }}>
@@ -404,7 +408,7 @@ export function VoiceConciergeSection() {
                   <p style={{ fontFamily: 'var(--font-serif)', fontSize: '20px', fontWeight: 800 }}>+1 (737) 258-3742</p>
                 </div>
                 <a href="tel:+17372583742" className="btn-white" style={{ padding: '8px 16px', fontSize: '12px' }}>
-                  📞 Call
+                  Direct Call
                 </a>
               </div>
             </div>

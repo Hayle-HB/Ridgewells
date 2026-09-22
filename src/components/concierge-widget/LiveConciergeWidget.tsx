@@ -169,7 +169,7 @@ export function LiveConciergeWidget() {
             }}
           >
             <span className="pulse-dot" />
-            <span>🎙️ Live AI Concierge</span>
+            <span>Event Concierge</span>
           </button>
         )}
       </div>
@@ -266,7 +266,7 @@ export function LiveConciergeWidget() {
                 cursor: 'pointer',
               }}
             >
-              💬 AI Intake Chat
+              Digital Concierge
             </button>
             <button
               type="button"
@@ -285,7 +285,7 @@ export function LiveConciergeWidget() {
                 cursor: 'pointer',
               }}
             >
-              📞 Direct Phone
+              Direct Phone
             </button>
           </div>
 
@@ -320,7 +320,7 @@ export function LiveConciergeWidget() {
                         margin: '0 auto 12px',
                       }}
                     >
-                      🎙️
+                      <span style={{ fontSize: '18px', color: '#592367', fontFamily: 'var(--font-editorial)' }}>✦</span>
                     </div>
                     <h5 style={{ fontFamily: 'var(--font-serif)', fontSize: '16px', color: '#592367', marginBottom: '4px' }}>
                       How May We Assist You?
@@ -483,7 +483,7 @@ export function LiveConciergeWidget() {
                   className="btn-luxury-purple"
                   style={{ width: '100%', padding: '10px', display: 'inline-flex' }}
                 >
-                  📞 Dial Now
+                  Dial Direct
                 </a>
               </div>
 

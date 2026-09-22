@@ -9,32 +9,31 @@ interface BespokeInquiryFormProps {
   initialGuests?: number;
 }
 
-const EVENT_RADIO_OPTIONS = [
-  { id: 'CORPORATE', label: 'Corporate Event' },
-  { id: 'WEDDING', label: 'Wedding' },
-  { id: 'GALA_SOCIAL', label: 'Social Event' },
+const EVENT_CATEGORIES = [
+  { id: 'CORPORATE', label: 'Corporate Gala' },
+  { id: 'WEDDING', label: 'Bespoke Wedding' },
+  { id: 'GALA_SOCIAL', label: 'Social Milestone' },
   { id: 'MAJOR_EVENT', label: 'Major Sporting Event' },
-  { id: 'TASTING', label: 'Bethesda Tasting Room' },
+  { id: 'TASTING', label: 'Bethesda Tasting Suite' },
 ];
 
-const BUDGET_OPTIONS = [
-  'Select estimated budget range...',
-  '$10,000 – $25,000',
-  '$25,000 – $50,000',
-  '$50,000 – $100,000',
-  '$100,000 – $250,000',
-  '$250,000+',
-  'Custom / To Be Determined',
+const BUDGET_TIERS = [
+  { id: '$10,000 – $25,000', label: '$10K – $25K' },
+  { id: '$25,000 – $50,000', label: '$25K – $50K' },
+  { id: '$50,000 – $100,000', label: '$50K – $100K' },
+  { id: '$100,000 – $250,000', label: '$100K – $250K' },
+  { id: '$250,000+', label: '$250K+' },
+  { id: 'Custom / To Be Determined', label: 'Custom / TBD' },
 ];
 
 const REFERRAL_OPTIONS = [
   'Select how you heard about us...',
-  'Search Engine (Google / Bing)',
-  'Andrew W. Mellon Auditorium Referral',
+  'Andrew W. Mellon Auditorium',
   'Attended a Past Ridgewells Event',
-  'Friend / Colleague Recommendation',
-  'Social Media (Instagram / LinkedIn)',
   'Venue / Event Planner Referral',
+  'Friend or Colleague Recommendation',
+  'Search (Google / Bing)',
+  'Social Media (Instagram / LinkedIn)',
   'Other',
 ];
 
@@ -61,6 +60,7 @@ export function BespokeInquiryForm({
     notes: '',
   });
 
+  const [focusedField, setFocusedField] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<{ [key: string]: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState<any | null>(null);
@@ -84,32 +84,31 @@ export function BespokeInquiryForm({
     const errors: { [key: string]: string } = {};
 
     if (!formData.firstName.trim()) {
-      errors.firstName = 'Please enter your first name.';
+      errors.firstName = 'First name is required.';
     }
     if (!formData.lastName.trim()) {
-      errors.lastName = 'Please enter your last name.';
+      errors.lastName = 'Last name is required.';
     }
     if (!formData.phone.trim()) {
-      errors.phone = 'Please enter your phone number.';
+      errors.phone = 'Phone number is required.';
     } else if (formData.phone.trim().length < 7) {
-      errors.phone = 'Please enter a valid telephone number (e.g. 301-652-1515).';
+      errors.phone = 'Please provide a valid phone number.';
     }
     if (!formData.email.trim()) {
-      errors.email = 'Please enter your email address.';
+      errors.email = 'Email address is required.';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
-      errors.email = 'Please enter a valid email address (e.g. name@organization.com).';
+      errors.email = 'Please provide a valid email address.';
     }
     if (!formData.eventDate.trim()) {
-      errors.eventDate = 'Please select your target event date on the calendar.';
+      errors.eventDate = 'Please select a target event date.';
     }
     if (!formData.guestCount || Number(formData.guestCount) <= 0) {
-      errors.guestCount = 'Please specify the estimated number of guests.';
+      errors.guestCount = 'Please indicate estimated guest count.';
     }
 
     if (Object.keys(errors).length > 0) {
       setFieldErrors(errors);
 
-      // Smoothly scroll to and focus the first invalid input box
       const focusOrder = ['firstName', 'lastName', 'phone', 'email', 'eventDate', 'guestCount'];
       for (const key of focusOrder) {
         if (errors[key]) {
@@ -158,12 +157,12 @@ export function BespokeInquiryForm({
       const json = await res.json();
       if (res.ok && json.success) {
         setSubmitSuccess(json.data);
-        window.scrollTo({ top: 300, behavior: 'smooth' });
+        window.scrollTo({ top: 250, behavior: 'smooth' });
       } else {
-        setErrorMessage(json.error || 'Unable to submit inquiry. Please verify your details.');
+        setErrorMessage(json.error || 'Unable to submit your inquiry. Please review your details.');
       }
     } catch {
-      setErrorMessage('Network error connecting to backend. Please verify server status.');
+      setErrorMessage('Network connection error. Please call our concierge team at (301) 652-1515.');
     } finally {
       setIsSubmitting(false);
     }
@@ -172,55 +171,59 @@ export function BespokeInquiryForm({
   return (
     <div style={{ width: '100%' }}>
       {submitSuccess ? (
-        /* SUCCESS CONFIRMATION */
+        /* ELEGANT CONFIRMATION PLAQUE */
         <div
           style={{
-            padding: 'clamp(48px, 6vw, 80px) 0',
+            padding: 'clamp(48px, 6vw, 72px) clamp(24px, 4vw, 48px)',
             textAlign: 'center',
-            maxWidth: '720px',
+            maxWidth: '680px',
             margin: '0 auto',
+            backgroundColor: '#FCFAF8',
+            borderRadius: '4px',
+            border: '1px solid rgba(89, 35, 103, 0.16)',
+            boxShadow: '0 12px 36px rgba(89, 35, 103, 0.05)',
           }}
         >
           <div
             style={{
-              width: '60px',
-              height: '60px',
+              width: '56px',
+              height: '56px',
               borderRadius: '50%',
-              backgroundColor: '#FAF5FB',
+              border: '1.5px solid #C5A880',
               color: '#592367',
-              fontSize: '24px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              margin: '0 auto 20px',
-              border: '1.5px solid #592367',
+              fontSize: '22px',
+              margin: '0 auto 24px',
+              fontFamily: 'var(--font-editorial)',
             }}
           >
-            ✓
+            ✦
           </div>
 
           <span
             style={{
-              fontSize: '11px',
-              fontWeight: 800,
+              fontSize: '10.5px',
+              fontWeight: 700,
               letterSpacing: '0.22em',
               textTransform: 'uppercase',
               color: '#9F8055',
               display: 'block',
-              marginBottom: '10px',
+              marginBottom: '12px',
             }}
           >
-            INQUIRY RECEIVED • REF #{submitSuccess.inquiryId?.slice(0, 8).toUpperCase() || 'RG-2026'}
+            INQUIRY RECEIVED • REFERENCE #{submitSuccess.inquiryId?.slice(0, 8).toUpperCase() || 'RG-1928'}
           </span>
 
           <h2
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(32px, 4vw, 44px)',
+              fontSize: 'clamp(28px, 3.5vw, 38px)',
               fontWeight: 400,
-              color: '#592367',
-              lineHeight: 1.2,
-              marginBottom: '18px',
+              color: '#35133E',
+              marginBottom: '16px',
+              letterSpacing: '-0.01em',
             }}
           >
             Thank You, {submitSuccess.customer?.fullName || formData.firstName}
@@ -228,371 +231,446 @@ export function BespokeInquiryForm({
 
           <p
             style={{
-              fontSize: '16px',
-              color: '#47434B',
-              lineHeight: 1.8,
-              marginBottom: '32px',
+              fontSize: '15.5px',
+              color: '#554E5B',
+              lineHeight: 1.75,
+              maxWidth: '520px',
+              margin: '0 auto 36px',
+              fontFamily: 'var(--font-sans)',
             }}
           >
-            We have received your event vision for <strong>{formData.guestCount} guests</strong> at{' '}
-            <strong>{formData.venuePreference}</strong>. A Senior Catering Director has been assigned to your date and will contact you within 1 business day.
+            We have received your event vision for <strong>{formData.guestCount} guests</strong>. A Senior Catering Director has been assigned to personally review your culinary specifications and connect with you within one business day.
           </p>
-
-          <div
-            style={{
-              backgroundColor: '#FAF5FB',
-              border: '1px solid rgba(89, 35, 103, 0.15)',
-              padding: '24px 32px',
-              textAlign: 'left',
-              marginBottom: '36px',
-              fontSize: '14px',
-              lineHeight: 1.8,
-            }}
-          >
-            <p><strong>Division Assigned:</strong> {submitSuccess.brandDivision || 'Ridgewells Executive Catering'}</p>
-            <p><strong>Direct Concierge Desk:</strong> (301) 652-1515 • info@ridgewells.com</p>
-            <p><strong>Showroom Suites:</strong> 5522 Dorsey Lane, Bethesda, MD 20816</p>
-          </div>
 
           <button
             type="button"
-            onClick={() => {
-              window.location.href = '/';
-            }}
+            onClick={() => (window.location.href = '/')}
             className="btn-luxury-purple"
-            style={{ padding: '16px 48px' }}
+            style={{ padding: '14px 40px', letterSpacing: '0.18em' }}
           >
-            Return to Homepage ➔
+            Return to Ridgewells Homepage
           </button>
         </div>
       ) : (
-        /* NATURAL FULL-WIDTH EDITORIAL FORM */
+        /* ARCHITECTURAL COMPACT LUXURY CONSULTATION FORM */
         <form onSubmit={handleSubmit} noValidate style={{ width: '100%' }}>
           {errorMessage && (
             <div
               style={{
-                backgroundColor: '#FAF5FB',
-                border: '1px solid #DC2626',
-                color: '#DC2626',
-                padding: '14px 20px',
-                fontSize: '14px',
-                fontWeight: 600,
-                marginBottom: '28px',
-                borderRadius: '2px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
+                backgroundColor: '#FAF1F1',
+                border: '1px solid rgba(185, 28, 28, 0.3)',
+                color: '#991B1B',
+                padding: '12px 18px',
+                fontSize: '13px',
+                lineHeight: 1.5,
+                marginBottom: '20px',
+                borderRadius: '3px',
               }}
             >
-              <span>⚠️</span>
-              <span>{errorMessage}</span>
+              {errorMessage}
             </div>
           )}
 
-          {/* 1. Radio Event Category Bar (Matching Real Website) */}
-          <div style={{ marginBottom: '36px' }}>
-            <label className="inquiry-field-label" style={{ marginBottom: '14px' }}>
-              Select Event Type <span className="required-star">*</span>
-            </label>
+          <div
+            style={{
+              backgroundColor: '#FFFFFF',
+              borderRadius: '4px',
+              border: '1px solid rgba(89, 35, 103, 0.12)',
+              padding: 'clamp(20px, 3.5vw, 32px)',
+              boxShadow: '0 4px 20px rgba(89, 35, 103, 0.03)',
+            }}
+          >
+            {/* ═══════════════════════════════════════════
+                PART 1: THE OCCASION (COMPACT TILES & TIMING)
+            ═══════════════════════════════════════════ */}
+            <div className="inquiry-section-header" style={{ marginBottom: '16px' }}>
+              <h3 className="inquiry-section-title">The Occasion</h3>
+              <span className="inquiry-section-step">Event Specifications</span>
+            </div>
+
+            {/* Event Choice (Concise, no descriptions, space-wise) */}
             <div
               style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: '20px 28px',
-                alignItems: 'center',
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))',
+                gap: '8px',
+                marginBottom: '20px',
               }}
             >
-              {EVENT_RADIO_OPTIONS.map((opt) => {
-                const isSelected = formData.eventType === opt.id;
+              {EVENT_CATEGORIES.map((cat) => {
+                const isSelected = formData.eventType === cat.id;
                 return (
-                  <label
-                    key={opt.id}
-                    onClick={() => handleFieldChange('eventType', opt.id)}
-                    className="inquiry-radio-label"
+                  <button
+                    key={cat.id}
+                    type="button"
+                    onClick={() => handleFieldChange('eventType', cat.id)}
                     style={{
-                      color: isSelected ? '#592367' : '#2B2330',
-                      fontWeight: isSelected ? 600 : 400,
+                      padding: '11px 10px',
+                      borderRadius: '3px',
+                      border: isSelected ? '1.5px solid #592367' : '1px solid #DFD7E2',
+                      backgroundColor: isSelected ? '#592367' : '#FCFBFD',
+                      color: isSelected ? '#FFFFFF' : '#332D37',
+                      cursor: 'pointer',
+                      textAlign: 'center',
+                      fontFamily: 'var(--font-serif)',
+                      fontSize: '13px',
+                      fontWeight: isSelected ? 600 : 500,
+                      transition: 'all 0.2s ease',
+                      boxShadow: isSelected ? '0 4px 12px rgba(89, 35, 103, 0.12)' : 'none',
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
                     }}
                   >
-                    <span
-                      className="inquiry-radio-dot"
-                      style={{
-                        border: isSelected ? '5px solid #592367' : '1.5px solid #A39EAA',
-                      }}
-                    />
-                    <span>{opt.label}</span>
-                  </label>
+                    {cat.label}
+                  </button>
                 );
               })}
             </div>
-          </div>
 
-          {/* 2. Personal Contact Fields (2 Columns) */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
-              gap: '24px 32px',
-              marginBottom: '28px',
-            }}
-          >
-            <div>
-              <label htmlFor="inquiry-firstName" className="inquiry-field-label">
-                First Name <span className="required-star">*</span>
-              </label>
-              <input
-                id="inquiry-firstName"
-                type="text"
-                className="inquiry-text-input"
-                placeholder="First Name"
-                value={formData.firstName}
-                onChange={(e) => handleFieldChange('firstName', e.target.value)}
-                style={{
-                  borderColor: fieldErrors.firstName ? '#DC2626' : undefined,
-                  boxShadow: fieldErrors.firstName ? '0 0 0 3px rgba(220, 38, 38, 0.12)' : undefined,
-                }}
-              />
-              {fieldErrors.firstName && (
-                <p style={{ color: '#DC2626', fontSize: '12.5px', marginTop: '6px', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <span>⚠️</span> {fieldErrors.firstName}
-                </p>
-              )}
-            </div>
-
-            <div>
-              <label htmlFor="inquiry-lastName" className="inquiry-field-label">
-                Last Name <span className="required-star">*</span>
-              </label>
-              <input
-                id="inquiry-lastName"
-                type="text"
-                className="inquiry-text-input"
-                placeholder="Last Name"
-                value={formData.lastName}
-                onChange={(e) => handleFieldChange('lastName', e.target.value)}
-                style={{
-                  borderColor: fieldErrors.lastName ? '#DC2626' : undefined,
-                  boxShadow: fieldErrors.lastName ? '0 0 0 3px rgba(220, 38, 38, 0.12)' : undefined,
-                }}
-              />
-              {fieldErrors.lastName && (
-                <p style={{ color: '#DC2626', fontSize: '12.5px', marginTop: '6px', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <span>⚠️</span> {fieldErrors.lastName}
-                </p>
-              )}
-            </div>
-          </div>
-
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
-              gap: '24px 32px',
-              marginBottom: '28px',
-            }}
-          >
-            <div>
-              <label htmlFor="inquiry-phone" className="inquiry-field-label">
-                Phone Number <span className="required-star">*</span>
-              </label>
-              <input
-                id="inquiry-phone"
-                type="tel"
-                className="inquiry-text-input"
-                placeholder="(301) 652-1515"
-                value={formData.phone}
-                onChange={(e) => handleFieldChange('phone', e.target.value)}
-                style={{
-                  borderColor: fieldErrors.phone ? '#DC2626' : undefined,
-                  boxShadow: fieldErrors.phone ? '0 0 0 3px rgba(220, 38, 38, 0.12)' : undefined,
-                }}
-              />
-              {fieldErrors.phone && (
-                <p style={{ color: '#DC2626', fontSize: '12.5px', marginTop: '6px', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <span>⚠️</span> {fieldErrors.phone}
-                </p>
-              )}
-            </div>
-
-            <div>
-              <label htmlFor="inquiry-email" className="inquiry-field-label">
-                Email Address <span className="required-star">*</span>
-              </label>
-              <input
-                id="inquiry-email"
-                type="email"
-                className="inquiry-text-input"
-                placeholder="name@organization.com"
-                value={formData.email}
-                onChange={(e) => handleFieldChange('email', e.target.value)}
-                style={{
-                  borderColor: fieldErrors.email ? '#DC2626' : undefined,
-                  boxShadow: fieldErrors.email ? '0 0 0 3px rgba(220, 38, 38, 0.12)' : undefined,
-                }}
-              />
-              {fieldErrors.email && (
-                <p style={{ color: '#DC2626', fontSize: '12.5px', marginTop: '6px', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <span>⚠️</span> {fieldErrors.email}
-                </p>
-              )}
-            </div>
-          </div>
-
-          {/* 3. Reusable Responsive Date & Time Picker */}
-          <div style={{ marginBottom: '28px' }}>
-            <EventDateTimePicker
-              date={formData.eventDate}
-              startTime={formData.startTime}
-              endTime={formData.endTime}
-              onDateChange={(d) => handleFieldChange('eventDate', d)}
-              onStartTimeChange={(t) => handleFieldChange('startTime', t)}
-              onEndTimeChange={(t) => handleFieldChange('endTime', t)}
-              dateError={fieldErrors.eventDate}
-              idPrefix="inquiry"
-            />
-          </div>
-
-          {/* 4. Venue & Budget & Guests Details */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
-              gap: '24px 32px',
-              marginBottom: '28px',
-            }}
-          >
-            <div>
-              <label htmlFor="inquiry-venuePreference" className="inquiry-field-label">
-                Event Location / Venue Preference
-              </label>
-              <input
-                id="inquiry-venuePreference"
-                type="text"
-                className="inquiry-text-input"
-                placeholder="e.g. Andrew W. Mellon Auditorium, Private Residence..."
-                value={formData.venuePreference}
-                onChange={(e) => handleFieldChange('venuePreference', e.target.value)}
+            {/* Date & Timing Row (Compact with floating labels) */}
+            <div style={{ marginBottom: '16px' }}>
+              <EventDateTimePicker
+                date={formData.eventDate}
+                startTime={formData.startTime}
+                endTime={formData.endTime}
+                onDateChange={(d) => handleFieldChange('eventDate', d)}
+                onStartTimeChange={(t) => handleFieldChange('startTime', t)}
+                onEndTimeChange={(t) => handleFieldChange('endTime', t)}
+                dateError={fieldErrors.eventDate}
+                idPrefix="inquiry"
               />
             </div>
 
-            <div>
-              <label htmlFor="inquiry-organization" className="inquiry-field-label">
-                Company / Host Organization (Optional)
-              </label>
-              <input
-                id="inquiry-organization"
-                type="text"
-                className="inquiry-text-input"
-                placeholder="e.g. Smithsonian, Embassy, Private Family..."
-                value={formData.organization}
-                onChange={(e) => handleFieldChange('organization', e.target.value)}
-              />
-            </div>
-          </div>
-
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
-              gap: '24px 32px',
-              marginBottom: '28px',
-            }}
-          >
-            <div>
-              <label htmlFor="inquiry-guestCount" className="inquiry-field-label">
-                Number of Guests <span className="required-star">*</span>
-              </label>
-              <input
-                id="inquiry-guestCount"
-                type="number"
-                min={1}
-                className="inquiry-text-input"
-                value={formData.guestCount}
-                onChange={(e) => handleFieldChange('guestCount', Number(e.target.value))}
-                style={{
-                  borderColor: fieldErrors.guestCount ? '#DC2626' : undefined,
-                  boxShadow: fieldErrors.guestCount ? '0 0 0 3px rgba(220, 38, 38, 0.12)' : undefined,
-                }}
-              />
-              {fieldErrors.guestCount && (
-                <p style={{ color: '#DC2626', fontSize: '12.5px', marginTop: '6px', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <span>⚠️</span> {fieldErrors.guestCount}
-                </p>
-              )}
-            </div>
-
-            <div>
-              <label htmlFor="inquiry-budgetRange" className="inquiry-field-label">
-                Estimated Total Catering Budget <span className="required-star">*</span>
-              </label>
-              <select
-                id="inquiry-budgetRange"
-                className="inquiry-select-input"
-                value={formData.budgetRange}
-                onChange={(e) => handleFieldChange('budgetRange', e.target.value)}
-              >
-                {BUDGET_OPTIONS.map((b, i) => (
-                  <option key={i} value={b}>
-                    {b}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-
-          {/* 5. Notes & Referrals */}
-          <div style={{ marginBottom: '28px' }}>
-            <label htmlFor="inquiry-notes" className="inquiry-field-label">
-              Any other details we should know?
-            </label>
-            <textarea
-              id="inquiry-notes"
-              rows={4}
-              className="inquiry-textarea"
-              placeholder="Tell us about your culinary preferences, theme, dietary requirements, or any special requests..."
-              value={formData.notes}
-              onChange={(e) => handleFieldChange('notes', e.target.value)}
-            />
-          </div>
-
-          <div style={{ marginBottom: '40px' }}>
-            <label htmlFor="inquiry-referralSource" className="inquiry-field-label">
-              How did you hear about us?
-            </label>
-            <select
-              id="inquiry-referralSource"
-              className="inquiry-select-input"
-              value={formData.referralSource}
-              onChange={(e) => handleFieldChange('referralSource', e.target.value)}
-            >
-              {REFERRAL_OPTIONS.map((r, i) => (
-                <option key={i} value={r}>
-                  {r}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* 6. Submit Button */}
-          <div>
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="btn-luxury-purple"
+            {/* Venue & Guest Count (Floating Labels Side by Side) */}
+            <div
               style={{
-                padding: '16px 56px',
-                fontSize: '13px',
-                letterSpacing: '0.16em',
-                borderRadius: '2px',
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))',
+                gap: '16px 20px',
+                marginBottom: '28px',
               }}
             >
-              {isSubmitting ? 'SUBMITTING...' : 'SUBMIT'}
-            </button>
+              <div
+                className={`floating-field-wrapper ${
+                  focusedField === 'venuePreference' || formData.venuePreference ? 'is-floating' : ''
+                } ${formData.venuePreference ? 'has-value' : ''} ${
+                  focusedField === 'venuePreference' ? 'is-focused' : ''
+                }`}
+              >
+                <input
+                  id="inquiry-venuePreference"
+                  type="text"
+                  className="floating-field-input"
+                  value={formData.venuePreference}
+                  onFocus={() => setFocusedField('venuePreference')}
+                  onBlur={() => setFocusedField(null)}
+                  onChange={(e) => handleFieldChange('venuePreference', e.target.value)}
+                />
+                <label htmlFor="inquiry-venuePreference" className="floating-field-label">
+                  Venue or Location Preference
+                </label>
+              </div>
+
+              <div
+                className={`floating-field-wrapper ${
+                  focusedField === 'guestCount' || formData.guestCount ? 'is-floating' : ''
+                } ${formData.guestCount ? 'has-value' : ''} ${
+                  focusedField === 'guestCount' ? 'is-focused' : ''
+                } ${fieldErrors.guestCount ? 'has-error' : ''}`}
+              >
+                <input
+                  id="inquiry-guestCount"
+                  type="number"
+                  min={1}
+                  className="floating-field-input"
+                  value={formData.guestCount || ''}
+                  onFocus={() => setFocusedField('guestCount')}
+                  onBlur={() => setFocusedField(null)}
+                  onChange={(e) => handleFieldChange('guestCount', Number(e.target.value))}
+                />
+                <label htmlFor="inquiry-guestCount" className="floating-field-label">
+                  Estimated Guest Count <span style={{ color: '#592367' }}>*</span>
+                </label>
+                {fieldErrors.guestCount && (
+                  <p className="floating-field-error-text">{fieldErrors.guestCount}</p>
+                )}
+              </div>
+            </div>
+
+            {/* ═══════════════════════════════════════════
+                PART 2: HOST CONTACT (FLOATING LABELS)
+            ═══════════════════════════════════════════ */}
+            <div className="inquiry-section-header" style={{ marginBottom: '16px' }}>
+              <h3 className="inquiry-section-title">Host Contact Information</h3>
+              <span className="inquiry-section-step">Direct Coordination</span>
+            </div>
+
+            {/* First Name & Last Name (Floating Labels) */}
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))',
+                gap: '16px 20px',
+                marginBottom: '16px',
+              }}
+            >
+              <div
+                className={`floating-field-wrapper ${
+                  focusedField === 'firstName' || formData.firstName ? 'is-floating' : ''
+                } ${formData.firstName ? 'has-value' : ''} ${
+                  focusedField === 'firstName' ? 'is-focused' : ''
+                } ${fieldErrors.firstName ? 'has-error' : ''}`}
+              >
+                <input
+                  id="inquiry-firstName"
+                  type="text"
+                  className="floating-field-input"
+                  value={formData.firstName}
+                  onFocus={() => setFocusedField('firstName')}
+                  onBlur={() => setFocusedField(null)}
+                  onChange={(e) => handleFieldChange('firstName', e.target.value)}
+                />
+                <label htmlFor="inquiry-firstName" className="floating-field-label">
+                  First Name <span style={{ color: '#592367' }}>*</span>
+                </label>
+                {fieldErrors.firstName && (
+                  <p className="floating-field-error-text">{fieldErrors.firstName}</p>
+                )}
+              </div>
+
+              <div
+                className={`floating-field-wrapper ${
+                  focusedField === 'lastName' || formData.lastName ? 'is-floating' : ''
+                } ${formData.lastName ? 'has-value' : ''} ${
+                  focusedField === 'lastName' ? 'is-focused' : ''
+                } ${fieldErrors.lastName ? 'has-error' : ''}`}
+              >
+                <input
+                  id="inquiry-lastName"
+                  type="text"
+                  className="floating-field-input"
+                  value={formData.lastName}
+                  onFocus={() => setFocusedField('lastName')}
+                  onBlur={() => setFocusedField(null)}
+                  onChange={(e) => handleFieldChange('lastName', e.target.value)}
+                />
+                <label htmlFor="inquiry-lastName" className="floating-field-label">
+                  Last Name <span style={{ color: '#592367' }}>*</span>
+                </label>
+                {fieldErrors.lastName && (
+                  <p className="floating-field-error-text">{fieldErrors.lastName}</p>
+                )}
+              </div>
+            </div>
+
+            {/* Telephone & Email (Floating Labels) */}
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))',
+                gap: '16px 20px',
+                marginBottom: '16px',
+              }}
+            >
+              <div
+                className={`floating-field-wrapper ${
+                  focusedField === 'phone' || formData.phone ? 'is-floating' : ''
+                } ${formData.phone ? 'has-value' : ''} ${
+                  focusedField === 'phone' ? 'is-focused' : ''
+                } ${fieldErrors.phone ? 'has-error' : ''}`}
+              >
+                <input
+                  id="inquiry-phone"
+                  type="tel"
+                  className="floating-field-input"
+                  value={formData.phone}
+                  onFocus={() => setFocusedField('phone')}
+                  onBlur={() => setFocusedField(null)}
+                  onChange={(e) => handleFieldChange('phone', e.target.value)}
+                />
+                <label htmlFor="inquiry-phone" className="floating-field-label">
+                  Telephone Number <span style={{ color: '#592367' }}>*</span>
+                </label>
+                {fieldErrors.phone && (
+                  <p className="floating-field-error-text">{fieldErrors.phone}</p>
+                )}
+              </div>
+
+              <div
+                className={`floating-field-wrapper ${
+                  focusedField === 'email' || formData.email ? 'is-floating' : ''
+                } ${formData.email ? 'has-value' : ''} ${
+                  focusedField === 'email' ? 'is-focused' : ''
+                } ${fieldErrors.email ? 'has-error' : ''}`}
+              >
+                <input
+                  id="inquiry-email"
+                  type="email"
+                  className="floating-field-input"
+                  value={formData.email}
+                  onFocus={() => setFocusedField('email')}
+                  onBlur={() => setFocusedField(null)}
+                  onChange={(e) => handleFieldChange('email', e.target.value)}
+                />
+                <label htmlFor="inquiry-email" className="floating-field-label">
+                  Email Address <span style={{ color: '#592367' }}>*</span>
+                </label>
+                {fieldErrors.email && (
+                  <p className="floating-field-error-text">{fieldErrors.email}</p>
+                )}
+              </div>
+            </div>
+
+            {/* Organization & Referral Source (Floating Labels) */}
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))',
+                gap: '16px 20px',
+                marginBottom: '28px',
+              }}
+            >
+              <div
+                className={`floating-field-wrapper ${
+                  focusedField === 'organization' || formData.organization ? 'is-floating' : ''
+                } ${formData.organization ? 'has-value' : ''} ${
+                  focusedField === 'organization' ? 'is-focused' : ''
+                }`}
+              >
+                <input
+                  id="inquiry-organization"
+                  type="text"
+                  className="floating-field-input"
+                  value={formData.organization}
+                  onFocus={() => setFocusedField('organization')}
+                  onBlur={() => setFocusedField(null)}
+                  onChange={(e) => handleFieldChange('organization', e.target.value)}
+                />
+                <label htmlFor="inquiry-organization" className="floating-field-label">
+                  Company, Organization, or Family (Optional)
+                </label>
+              </div>
+
+              <div className="floating-field-wrapper is-floating has-value">
+                <select
+                  id="inquiry-referralSource"
+                  className="floating-field-select"
+                  value={formData.referralSource}
+                  onChange={(e) => handleFieldChange('referralSource', e.target.value)}
+                >
+                  {REFERRAL_OPTIONS.map((r, i) => (
+                    <option key={i} value={r}>
+                      {r}
+                    </option>
+                  ))}
+                </select>
+                <label htmlFor="inquiry-referralSource" className="floating-field-label">
+                  How Did You Hear About Ridgewells?
+                </label>
+              </div>
+            </div>
+
+            {/* ═══════════════════════════════════════════
+                PART 3: CULINARY & BUDGET VISION
+            ═══════════════════════════════════════════ */}
+            <div className="inquiry-section-header" style={{ marginBottom: '16px' }}>
+              <h3 className="inquiry-section-title">Culinary & Budget Vision</h3>
+              <span className="inquiry-section-step">Hospitality Parameters</span>
+            </div>
+
+            {/* Compact Budget Tiers */}
+            <div style={{ marginBottom: '16px' }}>
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(110px, 1fr))',
+                  gap: '8px',
+                }}
+              >
+                {BUDGET_TIERS.map((tier) => {
+                  const isSelected = formData.budgetRange === tier.id;
+                  return (
+                    <button
+                      key={tier.id}
+                      type="button"
+                      onClick={() => handleFieldChange('budgetRange', tier.id)}
+                      style={{
+                        padding: '9px 8px',
+                        borderRadius: '3px',
+                        fontSize: '12.5px',
+                        fontWeight: isSelected ? 600 : 500,
+                        border: isSelected ? '1.5px solid #592367' : '1px solid #DFD7E2',
+                        backgroundColor: isSelected ? '#592367' : '#FAF8FB',
+                        color: isSelected ? '#FFFFFF' : '#47404E',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease',
+                        textAlign: 'center',
+                      }}
+                    >
+                      {tier.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Special Requests Floating Textarea */}
+            <div
+              className={`floating-field-wrapper ${
+                focusedField === 'notes' || formData.notes ? 'is-floating' : ''
+              } ${formData.notes ? 'has-value' : ''} ${focusedField === 'notes' ? 'is-focused' : ''}`}
+              style={{ marginBottom: '28px' }}
+            >
+              <textarea
+                id="inquiry-notes"
+                rows={2}
+                className="floating-field-textarea"
+                value={formData.notes}
+                onFocus={() => setFocusedField('notes')}
+                onBlur={() => setFocusedField(null)}
+                onChange={(e) => handleFieldChange('notes', e.target.value)}
+              />
+              <label htmlFor="inquiry-notes" className="floating-field-label">
+                Culinary Preferences, Service Style, Dietary Needs, or Special Notes (Optional)
+              </label>
+            </div>
+
+            {/* ═══════════════════════════════════════════
+                SUBMIT ACTION & REASSURANCE
+            ═══════════════════════════════════════════ */}
+            <div style={{ textAlign: 'center', maxWidth: '540px', margin: '0 auto' }}>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="btn-luxury-purple"
+                style={{
+                  width: '100%',
+                  maxWidth: '360px',
+                  padding: '15px 36px',
+                  fontSize: '12px',
+                  letterSpacing: '0.18em',
+                  borderRadius: '2px',
+                }}
+              >
+                {isSubmitting ? 'SUBMITTING CONSULTATION...' : 'REQUEST BESPOKE CONSULTATION ➔'}
+              </button>
+
+              <p
+                style={{
+                  marginTop: '12px',
+                  fontSize: '12px',
+                  color: '#7D7584',
+                  letterSpacing: '0.01em',
+                  lineHeight: 1.5,
+                }}
+              >
+                Ridgewells respects your confidentiality. An event director will review your specifications and contact you within one business day.
+              </p>
+            </div>
           </div>
         </form>
       )}
     </div>
   );
 }
-
-

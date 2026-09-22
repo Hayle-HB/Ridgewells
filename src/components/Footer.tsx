@@ -294,8 +294,8 @@ export function Footer() {
                 <li><a href="#corporate" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>Corporate Events & Galas</a></li>
                 <li><a href="#weddings" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>Weddings & Celebrations</a></li>
                 <li><a href="#social" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>Social & Milestone Gatherings</a></li>
-                <li><a href="#major-events" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>Major Sporting Events (USGA)</a></li>
-                <li><a href="#culinary" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>The Party Kitchen & Menus</a></li>
+                <li><a href="#culinary" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>The Party Kitchen</a></li>
+                <li><a href="https://ridgewellscatering.gethoneycart.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>Catering Menus & Ordering ↗</a></li>
               </ul>
             </div>
 

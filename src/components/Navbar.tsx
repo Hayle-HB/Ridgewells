@@ -89,8 +89,11 @@ export function Navbar({ onOpenInquiry }: NavbarProps) {
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
-          <a href="tel:+13016521515" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: '#FFFFFF' }}>
-            <span>📞</span> (301) 652-1515
+          <a href="tel:+13016521515" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', color: '#FFFFFF' }}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+            (301) 652-1515
           </a>
           <span className="desktop-only" style={{ opacity: 0.35 }}>|</span>
           <span className="desktop-only" style={{ opacity: 0.9 }}>
@@ -114,7 +117,7 @@ export function Navbar({ onOpenInquiry }: NavbarProps) {
             title="Instagram"
           >
             <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
             </svg>
           </a>
         </div>
@@ -338,7 +341,7 @@ export function Navbar({ onOpenInquiry }: NavbarProps) {
                         gap: '10px',
                       }}
                     >
-                      <span>🏛️</span> Andrew W. Mellon Auditorium
+                      <span style={{ color: '#9F8055' }}>✦</span> Andrew W. Mellon Auditorium
                     </a>
                   </div>
                 </div>
@@ -377,15 +380,19 @@ export function Navbar({ onOpenInquiry }: NavbarProps) {
 
           {/* Desktop Actions */}
           <div className="desktop-only" style={{ alignItems: 'center', gap: '12px', flexShrink: 0 }}>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => {
-                window.location.href = '/inquire';
-              }}
+            <a
+              href="https://ridgewellscatering.gethoneycart.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: 'none' }}
             >
-              Order
-            </Button>
+              <Button
+                variant="outline"
+                size="sm"
+              >
+                Order Now
+              </Button>
+            </a>
             <Link href="/inquire">
               <Button
                 variant="purple"
@@ -397,8 +404,17 @@ export function Navbar({ onOpenInquiry }: NavbarProps) {
           </div>
 
           {/* Mobile Right Controls: Mini CTA + Hamburger Button */}
-          <div className="mobile-only" style={{ alignItems: 'center', gap: '10px' }}>
-            <Link href="/inquire" className="btn-luxury-purple" style={{ padding: '8px 14px', fontSize: '10.5px' }}>
+          <div className="mobile-only" style={{ alignItems: 'center', gap: '8px' }}>
+            <a
+              href="https://ridgewellscatering.gethoneycart.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-luxury-outline"
+              style={{ padding: '7px 11px', fontSize: '10.5px', textDecoration: 'none' }}
+            >
+              Menu
+            </a>
+            <Link href="/inquire" className="btn-luxury-purple" style={{ padding: '7px 12px', fontSize: '10.5px' }}>
               Inquire
             </Link>
 
@@ -616,7 +632,7 @@ export function Navbar({ onOpenInquiry }: NavbarProps) {
                       ✦ Major Sporting Events (USGA)
                     </a>
                     <a href="/#venues" onClick={(e) => handleNavClick(e, 'venues')} style={{ fontSize: '13.5px', color: '#592367', fontWeight: 700 }}>
-                      🏛️ Mellon Auditorium
+                      ✦ Mellon Auditorium
                     </a>
                   </div>
                 )}
@@ -690,16 +706,20 @@ export function Navbar({ onOpenInquiry }: NavbarProps) {
                   Inquire For Your Event
                 </Button>
 
-                <Button
-                  variant="outline"
-                  fullWidth
-                  onClick={() => {
-                    setIsMobileMenuOpen(false);
-                    window.location.href = '/inquire';
-                  }}
+                <a
+                  href="https://ridgewellscatering.gethoneycart.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ textDecoration: 'none', width: '100%' }}
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Order Catering
-                </Button>
+                  <Button
+                    variant="outline"
+                    fullWidth
+                  >
+                    View Menu & Order
+                  </Button>
+                </a>
               </div>
 
               {/* Direct Call & Address info at bottom of drawer */}
@@ -707,8 +727,8 @@ export function Navbar({ onOpenInquiry }: NavbarProps) {
                 <p style={{ fontWeight: 700, color: '#592367', marginBottom: '4px' }}>Bethesda Showroom & Kitchens</p>
                 <p>5522 Dorsey Lane, Bethesda, MD</p>
                 <p style={{ marginTop: '8px' }}>
-                  <a href="tel:+13016521515" style={{ color: '#592367', fontWeight: 700 }}>
-                    📞 (301) 652-1515
+                  <a href="tel:+13016521515" style={{ color: '#592367', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                    (301) 652-1515
                   </a>
                 </p>
               </div>
